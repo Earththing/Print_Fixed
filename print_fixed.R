@@ -1,4 +1,4 @@
-# print-fixed.R
+# print_fixed.R
 # Function to print a dataset to a text file in a pleasing fixed width format
 
 # Make sure require packages are loaded
@@ -6,10 +6,11 @@ source("pkgTest.R")
 pkgTest("gdata")
 
 #
-print.fixed <- function(x, file=NULL, style="t", border=" ")
+print_fixed <- function(x, file=NULL, style="t", border=" ")
 {
-  format <- write.fwf(x, file=file, formatInfo=TRUE) # IDEA: random file name and then delete afterwards # Capture the format info in a varable
-  f2 <- write.fwf(format, file=file, formatInfo=TRUE) # Get the fomatting on the format information
+  format <- write.fwf(x, file="temp.txt", formatInfo=TRUE) # IDEA: random file name and then delete afterwards # Capture the format info in a varable
+  f2 <- write.fwf(format, file="temp.txt", formatInfo=TRUE) # Get the fomatting on the format information
+  Sys.chmod("temp.txt", mode = "0777", use_umask = FALSE)
   colw <- f2[1,4] # Get the widest column name width
   cwidth <- NULL
   names <- data.frame(t(data.frame(names(x)))) # Create a names data.frame with the column names in a column
