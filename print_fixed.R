@@ -10,7 +10,10 @@ print_fixed <- function(x, file=NULL, style="t", border=" ")
 {
   format <- write.fwf(x, file="temp.txt", formatInfo=TRUE) # IDEA: random file name and then delete afterwards # Capture the format info in a varable
   f2 <- write.fwf(format, file="temp.txt", formatInfo=TRUE) # Get the fomatting on the format information
+<<<<<<< HEAD
   Sys.chmod("temp.txt", mode = "0777", use_umask = FALSE)
+=======
+>>>>>>> FETCH_HEAD
   colw <- f2[1,4] # Get the widest column name width
   cwidth <- NULL
   names <- data.frame(t(data.frame(names(x)))) # Create a names data.frame with the column names in a column
